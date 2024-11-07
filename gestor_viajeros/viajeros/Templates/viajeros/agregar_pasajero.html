@@ -1,0 +1,51 @@
+{% extends 'viajeros/base.html' %}
+
+{% block content %}
+    <h1>Agregar Pasajero</h1>
+
+    <!-- Mostrar los mensajes de éxito o error -->
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li class="{% if message.tags == 'error' %}error{% else %}success{% endif %}">
+                {{ message }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ form.nombre.value|default:'' }}">
+        {% if form.nombre.errors %}
+            <ul>
+                {% for error in form.nombre.errors %}
+                    <li class="error">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <label for="cc">Cédula:</label>
+        <input type="text" id="cc" name="cc" value="{{ form.cc.value|default:'' }}">
+        {% if form.cc.errors %}
+            <ul>
+                {% for error in form.cc.errors %}
+                    <li class="error">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <label for="destino">Destino:</label>
+        <input type="text" id="destino" name="destino" value="{{ form.destino.value|default:'' }}">
+        {% if form.destino.errors %}
+            <ul>
+                {% for error in form.destino.errors %}
+                    <li class="error">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <button type="submit">Agregar Pasajero</button>
+    </form>
+{% endblock %}

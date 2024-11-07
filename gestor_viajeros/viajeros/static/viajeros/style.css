@@ -1,0 +1,246 @@
+/* Estilo general de la página */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9; /* Color de fondo suave */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #1d3557; /* Un azul profundo */
+    font-weight: 500;
+}
+
+/* Enlace de la página principal */
+a {
+    color: #1d3557; /* Color azul */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 18px;
+    color: #555;
+}
+
+input[type="text"], input[type="number"], input[type="email"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #007bff; /* Azul brillante */
+    background-color: #fff;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #1d3557; /* Azul oscuro */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #457b9d; /* Azul intermedio */
+}
+
+button:active {
+    background-color: #005f73; /* Azul oscuro para clic */
+}
+
+/* Mensajes de éxito o error */
+.success, .error {
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.success {
+    background-color: #2d6a4f;
+    color: white;
+}
+
+.error {
+    background-color: #e63946;
+    color: white;
+}
+
+/* Listas y enlaces */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+ul li a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1d3557;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo de la tabla de resultados */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f9;
+    font-size: 18px;
+}
+
+td {
+    font-size: 16px;
+}
+
+/* Ajustes responsivos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    form {
+        gap: 12px;
+    }
+
+    input[type="text"], input[type="number"], input[type="email"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    ul li {
+        font-size: 16px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
+
+/* Navegación */
+nav {
+    background-color: #1d3557;
+    padding: 10px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #457b9d;
+}
+
+/* Estilos para el footer si es necesario */
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-weight: bold;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin: 5px 0;
+}
+

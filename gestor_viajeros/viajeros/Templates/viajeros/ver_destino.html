@@ -1,0 +1,46 @@
+{% extends 'viajeros/base.html' %}
+
+{% block content %}
+    <form method="GET">
+        {% csrf_token %}
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" name="ciudad" id="ciudad" placeholder="Ingrese la ciudad">
+        <button type="submit">Contar pasajeros a esta ciudad</button>
+    </form>
+
+    <form method="GET">
+        {% csrf_token %}
+        <label for="cc">Número de Cédula:</label>
+        <input type="text" name="cc" id="cc" placeholder="Ingrese la cédula">
+        <button type="submit">Ver destino</button>
+    </form>
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li class="{% if message.tags == 'error' %}error{% else %}success{% endif %}">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if destino %}
+        <p>El pasajero viaja a {{ destino }}.</p>
+    {% endif %}
+
+    {% if ciudad %}
+        <p>{{ ciudad }} tiene {{ messages.0 }} pasajero(s) viajando hacia allá.</p>
+    {% endif %}
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Enlace para regresar al menú principal -->
+    <a href="{% url 'index' %}">Volver al menú principal</a>
+{% endblock %}
