@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dvcpoih#f%1#wkss*9h6hl!qg%f#7oe67ygq53z(0#b@k5agh('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['viajeros-h8g6fhd0d5gphmg2.eastus-01.azurewebsites.net', 'localhost', '127.0.0.1']
 
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'gestor_viajeros.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'viajeros' / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
