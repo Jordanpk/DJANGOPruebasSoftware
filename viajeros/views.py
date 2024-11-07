@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 
 
 def index(request):
-    return render(request, 'viajeros/index.html')
+    return render(request, 'index.html')
 
 # Lista de pasajeros
 pasajeros = [
@@ -49,7 +49,7 @@ def agregar_pasajero(request):
     else:
         form = PasajeroForm()
 
-    return render(request, 'viajeros/agregar_pasajero.html', {'form': form})
+    return render(request, 'agregar_pasajero.html', {'form': form})
 
 # Función para agregar ciudad
 def agregar_ciudad(request):
@@ -66,13 +66,13 @@ def agregar_ciudad(request):
                 ciudades.append((ciudad, pais))
                 request.session['ciudades'] = ciudades  # Guardar en la sesión
                 messages.success(request, "Ciudad agregada exitosamente.")
-                return render(request, 'viajeros/agregar_ciudad.html', {'form': form})
+                return render(request, 'agregar_ciudad.html', {'form': form})
         else:
             messages.error(request, "La ciudad y el país deben ser válidos.")
     else:
         form = CiudadForm()  # Al cargar el formulario vacío
 
-    return render(request, 'viajeros/agregar_ciudad.html', {'form': form})
+    return render(request, 'agregar_ciudad.html', {'form': form})
 
 # Función para ver el destino de un pasajero
 def ver_destino(request):
@@ -95,28 +95,28 @@ def ver_destino(request):
             messages.success(request, f"Hay {count} pasajero(s) viajando a {ciudad}.")
         else:
             messages.error(request, f"No hay pasajeros viajando a {ciudad}.")
-        return render(request, 'viajeros/ver_destino.html', {'ciudad': ciudad})
+        return render(request, 'ver_destino.html', {'ciudad': ciudad})
 
     elif cc:
         if not cc:
             messages.error(request, "Debes ingresar el número de cédula.")
-            return render(request, 'viajeros/ver_destino.html')
+            return render(request, 'ver_destino.html')
 
         try:
             cc = int(cc)  # Intentamos convertir la cédula a número
         except ValueError:
             messages.error(request, "La cédula debe ser un número válido.")
-            return render(request, 'viajeros/ver_destino.html')
+            return render(request, 'ver_destino.html')
 
         # Buscar la ciudad correspondiente a la cédula
         destino = next((p[2] for p in pasajeros if p[1] == cc), None)
         if not destino:
             messages.error(request, "Pasajero no encontrado.")
-            return render(request, 'viajeros/ver_destino.html')
+            return render(request, 'ver_destino.html')
 
-        return render(request, 'viajeros/ver_destino.html', {'destino': destino})
+        return render(request, 'ver_destino.html', {'destino': destino})
 
-    return render(request, 'viajeros/ver_destino.html')
+    return render(request, 'ver_destino.html')
 
 
 def ver_pais(request):
@@ -139,28 +139,28 @@ def ver_pais(request):
             messages.success(request, f"Hay {count} pasajero(s) viajando a {pais}.")
         else:
             messages.error(request, f"No hay pasajeros viajando a {pais}.")
-        return render(request, 'viajeros/ver_pais.html', {'pais': pais})
+        return render(request, 'ver_pais.html', {'pais': pais})
 
     elif cc:
         if not cc:
             messages.error(request, "Debes ingresar el número de cédula.")
-            return render(request, 'viajeros/ver_pais.html')
+            return render(request, 'ver_pais.html')
 
         try:
             cc = int(cc)  # Intentamos convertir la cédula a número
         except ValueError:
             messages.error(request, "La cédula debe ser un número válido.")
-            return render(request, 'viajeros/ver_pais.html')
+            return render(request, 'ver_pais.html')
 
         # Buscar la ciudad correspondiente a la cédula
         destino = next((p[2] for p in pasajeros if p[1] == cc), None)
         if not destino:
             messages.error(request, "Pasajero no encontrado.")
-            return render(request, 'viajeros/ver_pais.html')
+            return render(request, 'ver_pais.html')
 
         # Buscar el país correspondiente a la ciudad
         pais = next((c[1] for c in ciudades if c[0] == destino), None)
 
-        return render(request, 'viajeros/ver_pais.html', {'pais': pais})
+        return render(request, 'ver_pais.html', {'pais': pais})
 
-    return render(request, 'viajeros/ver_pais.html')
+    return render(request, 'ver_pais.html')
