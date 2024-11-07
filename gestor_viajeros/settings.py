@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -56,7 +55,10 @@ ROOT_URLCONF = 'gestor_viajeros.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'viajeros', 'templates')],
+        'DIRS': [
+            BASE_DIR / 'templates',  # Si tienes plantillas en el directorio raíz
+            BASE_DIR / 'viajeros' / 'templates',  # Si las plantillas están en la carpeta de la app
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +70,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'gestor_viajeros.wsgi.application'
 
@@ -119,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "viajeros" / "static",  # Apunta a la carpeta 'static' en la aplicación 'viajeros'
+    BASE_DIR / "viajeros" / "static",  # Ruta a los archivos estáticos
 ]
 
 
