@@ -9,4 +9,3 @@ urlpatterns = [
     path('agregar_pasajero/', views.agregar_pasajero, name='agregar_pasajero'),
     path('agregar_ciudad/', views.agregar_ciudad, name='agregar_ciudad'),
 ]
-
