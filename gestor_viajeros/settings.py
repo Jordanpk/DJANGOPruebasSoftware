@@ -56,8 +56,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',  # Si tienes plantillas en el directorio raíz
-            BASE_DIR / 'viajeros' / 'templates',  # Si las plantillas están en la carpeta de la app
+            BASE_DIR / 'Templates',  # Si tienes plantillas en el directorio raíz
+            BASE_DIR / 'viajeros' / 'Templates',  # Si las plantillas están en la carpeta de la app
         ],
         'APP_DIRS': True,
         'OPTIONS': {
