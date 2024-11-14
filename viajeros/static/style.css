@@ -264,3 +264,22 @@ select:focus {
     border-color: #007bff;
     background-color: #fff;
 }
+
+/* Estilo de los mensajes de error como tooltip */
+.error-tooltip {
+    color: #e63946; /* Color rojo para el mensaje de error */
+    font-size: 0.9em;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.error-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: #e63946; /* Flecha de color rojo */
+}

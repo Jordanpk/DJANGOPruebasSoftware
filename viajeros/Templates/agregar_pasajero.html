@@ -20,21 +20,13 @@
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" value="{{ form.nombre.value|default:'' }}">
         {% if form.nombre.errors %}
-            <ul>
-                {% for error in form.nombre.errors %}
-                    <li class="error">{{ error }}</li>
-                {% endfor %}
-            </ul>
+            <span class="error-tooltip">{{ form.nombre.errors.0 }}</span>
         {% endif %}
 
         <label for="cc">Cédula:</label>
         <input type="text" id="cc" name="cc" value="{{ form.cc.value|default:'' }}">
         {% if form.cc.errors %}
-            <ul>
-                {% for error in form.cc.errors %}
-                    <li class="error">{{ error }}</li>
-                {% endfor %}
-            </ul>
+            <span class="error-tooltip">{{ form.cc.errors.0 }}</span>
         {% endif %}
 
         <label for="destino">Destino:</label>
@@ -47,16 +39,11 @@
             {% endfor %}
         </select>
         {% if form.destino.errors %}
-        <ul>
-            {% for error in form.destino.errors %}
-                <li class="error">{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+            <span class="error-tooltip">{{ form.destino.errors.0 }}</span>
+        {% endif %}
 
-    <button type="submit">Agregar Pasajero</button>
-    <!-- <p>Botones desactivados: {{ botones_desactivados }}</p> -->
-{% endblock %}
+        <button type="submit">Agregar Pasajero</button>
+    {% endblock %}
 
 {% block javascript %}
 <script>
