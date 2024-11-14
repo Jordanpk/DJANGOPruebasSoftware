@@ -3,7 +3,6 @@
 {% block content %}
     <h1>Agregar Pasajero</h1>
 
-    <!-- Mostrar los mensajes de éxito o error -->
     {% if messages %}
         <ul>
         {% for message in messages %}
@@ -14,8 +13,10 @@
         </ul>
     {% endif %}
 
-    <form method="POST">
+    <!-- Agregamos el valor de 'hay_ciudades' como un data-attribute en el formulario -->
+    <form id="formularioPasajero" method="POST" onsubmit="return validarEnvioFormulario()" data-hay-ciudades="{{ hay_ciudades|yesno:"true,false" }}">
         {% csrf_token %}
+        
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" value="{{ form.nombre.value|default:'' }}">
         {% if form.nombre.errors %}
@@ -37,15 +38,39 @@
         {% endif %}
 
         <label for="destino">Destino:</label>
-        <input type="text" id="destino" name="destino" value="{{ form.destino.value|default:'' }}">
+        <select id="destino" name="destino" {% if not form.destino.field.choices %} disabled {% endif %}>
+            <option value="">Selecciona un destino</option>
+            {% for ciudad in form.destino.field.choices %}
+                <option value="{{ ciudad.0 }}" {% if ciudad.0 == form.destino.value %} selected {% endif %}>
+                    {{ ciudad.1 }}
+                </option>
+            {% endfor %}
+        </select>
         {% if form.destino.errors %}
-            <ul>
-                {% for error in form.destino.errors %}
-                    <li class="error">{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+        <ul>
+            {% for error in form.destino.errors %}
+                <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
-        <button type="submit">Agregar Pasajero</button>
-    </form>
+    <button type="submit">Agregar Pasajero</button>
+    <p>Botones desactivados: {{ botones_desactivados }}</p>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    function validarEnvioFormulario() {
+        // Recuperamos el valor de 'hay_ciudades' desde el data-attribute
+        const form = document.getElementById('formularioPasajero');
+        const tieneCiudades = form.getAttribute('data-hay-ciudades') === "true";
+
+        if (!tieneCiudades) {
+            alert("No se puede agregar un pasajero sin una ciudad registrada.");
+            return false; // Evita el envío del formulario
+        }
+        
+        return true;
+    }
+</script>
 {% endblock %}

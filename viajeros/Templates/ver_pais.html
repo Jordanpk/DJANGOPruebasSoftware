@@ -5,7 +5,7 @@
         {% csrf_token %}
         <label for="pais">País:</label>
         <input type="text" name="pais" id="pais" placeholder="Ingrese el país">
-        <button type="submit">Contar pasajeros a este país</button>
+        <button type="submit" class="{% if botones_desactivados %}button-disabled{% endif %}">Contar pasajeros a este país</button>
     </form>
 
     <form method="GET">

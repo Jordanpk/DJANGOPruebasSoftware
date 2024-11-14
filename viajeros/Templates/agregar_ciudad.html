@@ -14,7 +14,7 @@
         </ul>
     {% endif %}
 
-    <form method="POST">
+    <form id="formularioCiudad" form method="POST">
         {% csrf_token %}
         <label for="ciudad">Ciudad:</label>
         <input type="text" id="ciudad" name="ciudad">

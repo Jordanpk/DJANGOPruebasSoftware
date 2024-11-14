@@ -1,5 +1,5 @@
 {% load static %}
-<!-- viajeros/templates/base.html -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,10 +13,13 @@
     <nav>
         <ul>
             <li><a href="{% url 'index' %}">Inicio</a></li>
-            <li><a href="{% url 'agregar_pasajero' %}">Agregar Pasajero</a></li>
             <li><a href="{% url 'agregar_ciudad' %}">Agregar Ciudad</a></li>
-            <li><a href="{% url 'ver_destino' %}">Ver Destino</a></li>
-            <li><a href="{% url 'ver_pais' %}">Ver País</a></li>
+            <li><a href="{% url 'agregar_pasajero' %}">Agregar Pasajero</a></li>
+            <li><a href="{% url 'ver_destino' %}" class="{% if botones_desactivados %}button-disabled{% endif %}">
+                Ver Destino
+            </a></li>
+            <li><a href="{% url 'ver_pais' %}" class="{% if botones_desactivados %}button-disabled{% endif %}">
+                Ver País</a></li>
         </ul>
     </nav>
 
@@ -26,10 +29,6 @@
         {% endblock %}
     </div>
 
-   
-
-
-
     <footer>
         <p>Desarrolladores:</p>
         <ul>
@@ -38,5 +37,9 @@
         </ul>
         <p>Universidad Pascual Bravo</p>
     </footer>
+
+    {% block javascript %}
+    {% endblock %}
+    
 </body>
 </html>
